@@ -6,7 +6,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: '/bin/bash'
   args: ['build.sh']
-  id: 'Run Hello World Script'
+  id: 'Run Hello World Scripttesing'
 
 # Options: This section fixes the "Failed to trigger build" error
 # related to custom service accounts and log permissions.

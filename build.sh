@@ -4,6 +4,6 @@
 
 # Display a greeting message to the console
 echo "********************************************"
-echo "        Hello, Cloud Build World!           "
+echo "        Hello, Cloud Build Worldtesting!           "
 echo "********************************************"
 echo "Script execution complete."
