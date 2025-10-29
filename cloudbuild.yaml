@@ -1,12 +1,10 @@
 steps:
-- name: 'gcr.io/cloud-builders/bash'
+- name: 'bash' # Changed from 'gcr.io/cloud-builders/bash' to the official 'bash' image
   args: ['/bin/bash', 'build.sh']
   # This step runs your shell script
 
-# --- NEW SECTION ADDED FOR LOGGING ---
+# This logging option fixes the previous "Failed to trigger build" error
 options:
-  # This option sends all build logs directly to Cloud Logging,
-  # satisfying the requirement when a user-specified service account is used.
   logging: CLOUD_LOGGING_ONLY
 
 # Uncomment the sections below when you are ready to use them.
