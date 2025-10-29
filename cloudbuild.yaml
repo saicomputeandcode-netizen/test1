@@ -1,7 +1,10 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud' # Using the official GCloud builder, which reliably includes bash
-  args: ['bash', 'build.sh'] # Now we tell the GCloud container to execute 'bash build.sh'
-  # This step runs your shell script
+- name: 'gcr.io/cloud-builders/bash' # Using the official bash builder (should work now)
+  # Force the container to use /bin/bash as the command interpreter
+  entrypoint: '/bin/bash'
+  # Pass the script name as the argument to the interpreter
+  args: ['build.sh']
+  id: 'Run Shell Script'
 
 # This logging option fixes the previous "Failed to trigger build" error
 options:
