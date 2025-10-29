@@ -1,28 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/bash' # Using the official bash builder (should work now)
-  # Force the container to use /bin/bash as the command interpreter
+# Step 1: Run the 'hello.sh' script.
+# We use the 'gcr.io/cloud-builders/gcloud' image because it is Google's most
+# reliable official builder and guarantees a stable bash environment (/bin/bash)
+# is available, which solves the previous "No such file or directory" error.
+- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: '/bin/bash'
-  # Pass the script name as the argument to the interpreter
   args: ['build.sh']
-  id: 'Run Shell Script'
+  id: 'Run Hello World Script'
 
-# This logging option fixes the previous "Failed to trigger build" error
+# Options: This section fixes the "Failed to trigger build" error
+# related to custom service accounts and log permissions.
 options:
   logging: CLOUD_LOGGING_ONLY
-
-# Uncomment the sections below when you are ready to use them.
-
-# --- Optional: Build and push a Docker image to Artifact Registry ---
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/my-app:latest', '.']
-#   id: 'Build Image'
-
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/my-app:latest']
-#   id: 'Push Image'
-
-# --- Optional: Define artifacts for files you want to save after the build ---
-# artifacts:
-#   objects:
-#     location: 'gs://your-artifacts-bucket-name'
-#     paths: ['build_output/info.txt']
